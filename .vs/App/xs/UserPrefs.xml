@@ -1,0 +1,28 @@
+﻿<Properties StartupConfiguration="{974CE33C-3F75-4BBF-B670-EE5DAF876AF0}|Default">
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workbench ActiveDocument="App/Controllers/CountryController.cs">
+    <Files>
+      <File FileName="Repository/Repositories/Repository.cs" Line="69" Column="6" />
+      <File FileName="App/Controllers/CountryController.cs" Line="132" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="App" expanded="True">
+            <Node name="App" expanded="True">
+              <Node name="Controllers" expanded="True">
+                <Node name="CountryController.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.App PreferredExecutionTarget="/Applications/Google Chrome.app" />
+</Properties>
