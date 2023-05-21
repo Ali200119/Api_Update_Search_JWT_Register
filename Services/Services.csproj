@@ -20,9 +20,15 @@
   <ItemGroup>
     <None Remove="DTOs\Country\" />
     <None Remove="DTOs\City\" />
+    <None Remove="DTOs\Account\" />
+    <None Remove="Helpers\" />
+    <None Remove="Helpers\Responses\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DTOs\Country\" />
     <Folder Include="DTOs\City\" />
+    <Folder Include="DTOs\Account\" />
+    <Folder Include="Helpers\" />
+    <Folder Include="Helpers\Responses\" />
   </ItemGroup>
 </Project>

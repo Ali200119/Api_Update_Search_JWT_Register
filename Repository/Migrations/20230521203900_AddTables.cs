@@ -28,6 +28,7 @@ namespace Repository.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    FullName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -213,9 +214,9 @@ namespace Repository.Migrations
                 columns: new[] { "Id", "CreatedAt", "Name", "SoftDelete" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 5, 21, 21, 35, 48, 746, DateTimeKind.Local).AddTicks(4060), "Azerbaijan", false },
-                    { 2, new DateTime(2023, 5, 21, 21, 35, 48, 746, DateTimeKind.Local).AddTicks(4060), "Turkey", false },
-                    { 3, new DateTime(2023, 5, 21, 21, 35, 48, 746, DateTimeKind.Local).AddTicks(4060), "USA", false }
+                    { 1, new DateTime(2023, 5, 22, 0, 39, 0, 241, DateTimeKind.Local).AddTicks(6460), "Azerbaijan", false },
+                    { 2, new DateTime(2023, 5, 22, 0, 39, 0, 241, DateTimeKind.Local).AddTicks(6460), "Turkey", false },
+                    { 3, new DateTime(2023, 5, 22, 0, 39, 0, 241, DateTimeKind.Local).AddTicks(6470), "USA", false }
                 });
 
             migrationBuilder.InsertData(
@@ -223,9 +224,9 @@ namespace Repository.Migrations
                 columns: new[] { "Id", "Address", "Age", "CreatedAt", "FullName", "SoftDelete" },
                 values: new object[,]
                 {
-                    { 1, "Sumqayit", 27, new DateTime(2023, 5, 21, 21, 35, 48, 746, DateTimeKind.Local).AddTicks(3980), "Roya Meherremova", false },
-                    { 2, "Xetai", 28, new DateTime(2023, 5, 21, 21, 35, 48, 746, DateTimeKind.Local).AddTicks(4000), "Anar Aliyev", false },
-                    { 3, "Nesimi", 18, new DateTime(2023, 5, 21, 21, 35, 48, 746, DateTimeKind.Local).AddTicks(4000), "Mubariz Agayev", false }
+                    { 1, "Sumqayit", 27, new DateTime(2023, 5, 22, 0, 39, 0, 241, DateTimeKind.Local).AddTicks(6370), "Roya Meherremova", false },
+                    { 2, "Xetai", 28, new DateTime(2023, 5, 22, 0, 39, 0, 241, DateTimeKind.Local).AddTicks(6410), "Anar Aliyev", false },
+                    { 3, "Nesimi", 18, new DateTime(2023, 5, 22, 0, 39, 0, 241, DateTimeKind.Local).AddTicks(6410), "Mubariz Agayev", false }
                 });
 
             migrationBuilder.InsertData(
@@ -233,12 +234,12 @@ namespace Repository.Migrations
                 columns: new[] { "Id", "CountryId", "CreatedAt", "Name", "SoftDelete" },
                 values: new object[,]
                 {
-                    { 1, 1, new DateTime(2023, 5, 21, 21, 35, 48, 746, DateTimeKind.Local).AddTicks(4070), "Baku", false },
-                    { 2, 1, new DateTime(2023, 5, 21, 21, 35, 48, 746, DateTimeKind.Local).AddTicks(4070), "Kurdemir", false },
-                    { 3, 2, new DateTime(2023, 5, 21, 21, 35, 48, 746, DateTimeKind.Local).AddTicks(4070), "Ankara", false },
-                    { 4, 2, new DateTime(2023, 5, 21, 21, 35, 48, 746, DateTimeKind.Local).AddTicks(4070), "Istanbul", false },
-                    { 5, 3, new DateTime(2023, 5, 21, 21, 35, 48, 746, DateTimeKind.Local).AddTicks(4080), "New-York", false },
-                    { 6, 3, new DateTime(2023, 5, 21, 21, 35, 48, 746, DateTimeKind.Local).AddTicks(4080), "Washington", false }
+                    { 1, 1, new DateTime(2023, 5, 22, 0, 39, 0, 241, DateTimeKind.Local).AddTicks(6470), "Baku", false },
+                    { 2, 1, new DateTime(2023, 5, 22, 0, 39, 0, 241, DateTimeKind.Local).AddTicks(6480), "Kurdemir", false },
+                    { 3, 2, new DateTime(2023, 5, 22, 0, 39, 0, 241, DateTimeKind.Local).AddTicks(6480), "Ankara", false },
+                    { 4, 2, new DateTime(2023, 5, 22, 0, 39, 0, 241, DateTimeKind.Local).AddTicks(6480), "Istanbul", false },
+                    { 5, 3, new DateTime(2023, 5, 22, 0, 39, 0, 241, DateTimeKind.Local).AddTicks(6480), "New-York", false },
+                    { 6, 3, new DateTime(2023, 5, 22, 0, 39, 0, 241, DateTimeKind.Local).AddTicks(6480), "Washington", false }
                 });
 
             migrationBuilder.CreateIndex(

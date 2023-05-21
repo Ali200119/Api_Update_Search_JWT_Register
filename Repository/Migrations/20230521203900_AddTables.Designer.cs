@@ -12,7 +12,7 @@ using Repository.Data;
 namespace Repository.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230521173548_AddTables")]
+    [Migration("20230521203900_AddTables")]
     partial class AddTables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,6 +23,75 @@ namespace Repository.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+
+            modelBuilder.Entity("Domain.Models.AppUser", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedEmail")
+                        .HasDatabaseName("EmailIndex");
+
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasDatabaseName("UserNameIndex")
+                        .HasFilter("[NormalizedUserName] IS NOT NULL");
+
+                    b.ToTable("AspNetUsers", (string)null);
+                });
 
             modelBuilder.Entity("Domain.Models.City", b =>
                 {
@@ -56,7 +125,7 @@ namespace Repository.Migrations
                         {
                             Id = 1,
                             CountryId = 1,
-                            CreatedAt = new DateTime(2023, 5, 21, 21, 35, 48, 746, DateTimeKind.Local).AddTicks(4070),
+                            CreatedAt = new DateTime(2023, 5, 22, 0, 39, 0, 241, DateTimeKind.Local).AddTicks(6470),
                             Name = "Baku",
                             SoftDelete = false
                         },
@@ -64,7 +133,7 @@ namespace Repository.Migrations
                         {
                             Id = 2,
                             CountryId = 1,
-                            CreatedAt = new DateTime(2023, 5, 21, 21, 35, 48, 746, DateTimeKind.Local).AddTicks(4070),
+                            CreatedAt = new DateTime(2023, 5, 22, 0, 39, 0, 241, DateTimeKind.Local).AddTicks(6480),
                             Name = "Kurdemir",
                             SoftDelete = false
                         },
@@ -72,7 +141,7 @@ namespace Repository.Migrations
                         {
                             Id = 3,
                             CountryId = 2,
-                            CreatedAt = new DateTime(2023, 5, 21, 21, 35, 48, 746, DateTimeKind.Local).AddTicks(4070),
+                            CreatedAt = new DateTime(2023, 5, 22, 0, 39, 0, 241, DateTimeKind.Local).AddTicks(6480),
                             Name = "Ankara",
                             SoftDelete = false
                         },
@@ -80,7 +149,7 @@ namespace Repository.Migrations
                         {
                             Id = 4,
                             CountryId = 2,
-                            CreatedAt = new DateTime(2023, 5, 21, 21, 35, 48, 746, DateTimeKind.Local).AddTicks(4070),
+                            CreatedAt = new DateTime(2023, 5, 22, 0, 39, 0, 241, DateTimeKind.Local).AddTicks(6480),
                             Name = "Istanbul",
                             SoftDelete = false
                         },
@@ -88,7 +157,7 @@ namespace Repository.Migrations
                         {
                             Id = 5,
                             CountryId = 3,
-                            CreatedAt = new DateTime(2023, 5, 21, 21, 35, 48, 746, DateTimeKind.Local).AddTicks(4080),
+                            CreatedAt = new DateTime(2023, 5, 22, 0, 39, 0, 241, DateTimeKind.Local).AddTicks(6480),
                             Name = "New-York",
                             SoftDelete = false
                         },
@@ -96,7 +165,7 @@ namespace Repository.Migrations
                         {
                             Id = 6,
                             CountryId = 3,
-                            CreatedAt = new DateTime(2023, 5, 21, 21, 35, 48, 746, DateTimeKind.Local).AddTicks(4080),
+                            CreatedAt = new DateTime(2023, 5, 22, 0, 39, 0, 241, DateTimeKind.Local).AddTicks(6480),
                             Name = "Washington",
                             SoftDelete = false
                         });
@@ -128,21 +197,21 @@ namespace Repository.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2023, 5, 21, 21, 35, 48, 746, DateTimeKind.Local).AddTicks(4060),
+                            CreatedAt = new DateTime(2023, 5, 22, 0, 39, 0, 241, DateTimeKind.Local).AddTicks(6460),
                             Name = "Azerbaijan",
                             SoftDelete = false
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2023, 5, 21, 21, 35, 48, 746, DateTimeKind.Local).AddTicks(4060),
+                            CreatedAt = new DateTime(2023, 5, 22, 0, 39, 0, 241, DateTimeKind.Local).AddTicks(6460),
                             Name = "Turkey",
                             SoftDelete = false
                         },
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTime(2023, 5, 21, 21, 35, 48, 746, DateTimeKind.Local).AddTicks(4060),
+                            CreatedAt = new DateTime(2023, 5, 22, 0, 39, 0, 241, DateTimeKind.Local).AddTicks(6470),
                             Name = "USA",
                             SoftDelete = false
                         });
@@ -183,7 +252,7 @@ namespace Repository.Migrations
                             Id = 1,
                             Address = "Sumqayit",
                             Age = 27,
-                            CreatedAt = new DateTime(2023, 5, 21, 21, 35, 48, 746, DateTimeKind.Local).AddTicks(3980),
+                            CreatedAt = new DateTime(2023, 5, 22, 0, 39, 0, 241, DateTimeKind.Local).AddTicks(6370),
                             FullName = "Roya Meherremova",
                             SoftDelete = false
                         },
@@ -192,7 +261,7 @@ namespace Repository.Migrations
                             Id = 2,
                             Address = "Xetai",
                             Age = 28,
-                            CreatedAt = new DateTime(2023, 5, 21, 21, 35, 48, 746, DateTimeKind.Local).AddTicks(4000),
+                            CreatedAt = new DateTime(2023, 5, 22, 0, 39, 0, 241, DateTimeKind.Local).AddTicks(6410),
                             FullName = "Anar Aliyev",
                             SoftDelete = false
                         },
@@ -201,7 +270,7 @@ namespace Repository.Migrations
                             Id = 3,
                             Address = "Nesimi",
                             Age = 18,
-                            CreatedAt = new DateTime(2023, 5, 21, 21, 35, 48, 746, DateTimeKind.Local).AddTicks(4000),
+                            CreatedAt = new DateTime(2023, 5, 22, 0, 39, 0, 241, DateTimeKind.Local).AddTicks(6410),
                             FullName = "Mubariz Agayev",
                             SoftDelete = false
                         });
@@ -257,71 +326,6 @@ namespace Repository.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetRoleClaims", (string)null);
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUser", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("AccessFailedCount")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Email")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<bool>("EmailConfirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("LockoutEnabled")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("NormalizedEmail")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<string>("NormalizedUserName")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<string>("PasswordHash")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("PhoneNumberConfirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("SecurityStamp")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("TwoFactorEnabled")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("UserName")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("NormalizedEmail")
-                        .HasDatabaseName("EmailIndex");
-
-                    b.HasIndex("NormalizedUserName")
-                        .IsUnique()
-                        .HasDatabaseName("UserNameIndex")
-                        .HasFilter("[NormalizedUserName] IS NOT NULL");
-
-                    b.ToTable("AspNetUsers", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -427,7 +431,7 @@ namespace Repository.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("Domain.Models.AppUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -436,7 +440,7 @@ namespace Repository.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("Domain.Models.AppUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -451,7 +455,7 @@ namespace Repository.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("Domain.Models.AppUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -460,7 +464,7 @@ namespace Repository.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("Domain.Models.AppUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
