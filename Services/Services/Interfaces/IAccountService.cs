@@ -6,6 +6,7 @@ namespace Services.Services.Interfaces
 {
 	public interface IAccountService
 	{
-		Task<AuthResponse> SignUpAsync(RegisterDto model);
+		Task<RegisterResponse> SignUpAsync(RegisterDto model);
+		Task<LoginResponse> SignInAsync(LoginDto model);
 	}
 }
