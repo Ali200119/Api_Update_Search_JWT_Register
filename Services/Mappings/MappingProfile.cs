@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Domain.Models;
+using Services.DTOs.City;
 using Services.DTOs.Country;
 using Services.DTOs.Employee;
 using System;
@@ -19,6 +20,12 @@ namespace Services.Mappings
             CreateMap<EmployeeEditDto, Employee>().ReverseMap();
 
             CreateMap<Country, CountryDto>().ReverseMap();
+            CreateMap<Country, CountryEditDto>().ReverseMap();
+            CreateMap<CountryCreateDto, Country>();
+
+            CreateMap<City, CityDto>().ReverseMap();
+            CreateMap<CityCreateDto, City>();
+            CreateMap<City, CityEditDto>().ReverseMap();
         }
     }
 }

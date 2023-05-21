@@ -1,4 +1,5 @@
-﻿using Domain.Common;
+﻿using System.Linq.Expressions;
+using Domain.Common;
 using Microsoft.EntityFrameworkCore;
 using Repository.Data;
 using Repository.Repositories.Interfaces;
@@ -32,11 +33,6 @@ namespace Repository.Repositories
             await SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<T>> GetAllAsync()
-        {
-            return await entities.ToListAsync();
-        }
-
         public async Task<T> GetByIdAsync(int? id)
         {
             if(id == null) throw new ArgumentNullException(); 
@@ -66,5 +62,7 @@ namespace Repository.Repositories
 
             await SaveChangesAsync();
         }
+
+        public async Task<IEnumerable<T>> FindAllAsync(Expression<Func<T, bool>> expression = null) => expression == null ? await entities.ToListAsync() : await entities.Where(expression).ToListAsync();
     }
 }

@@ -5,7 +5,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Services.DTOs.Country;
-using Services.DTOs.Employee;
 using Services.Services.Interfaces;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -37,7 +36,7 @@ namespace App.Controllers
         [ProducesResponseType(statusCode: StatusCodes.Status200OK, Type = typeof(CountryDto))]
         [ProducesResponseType(statusCode: StatusCodes.Status404NotFound)]
         [ProducesResponseType(statusCode: StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> GetById([FromRoute][Required] int id)
+        public async Task<IActionResult> GetById([FromRoute, Required] int id)
         {
             try
             {
@@ -58,7 +57,7 @@ namespace App.Controllers
         [HttpPost]
         [ProducesResponseType(statusCode: StatusCodes.Status201Created)]
         [ProducesResponseType(statusCode: StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> Create([FromBody] CountryCreateDto country)
+        public async Task<IActionResult> Create([FromBody, Required] CountryCreateDto country)
         {
             try
             {
@@ -74,7 +73,8 @@ namespace App.Controllers
         [HttpDelete]
         [Route("{id}")]
         [ProducesResponseType(statusCode: StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> Delete([FromRoute] int id)
+        [ProducesResponseType(statusCode: StatusCodes.Status200OK)]
+        public async Task<IActionResult> Delete([FromRoute, Required] int id)
         {
             try
             {
@@ -117,8 +117,7 @@ namespace App.Controllers
         {
             try
             {
-                return Ok(await _service.SearchByName(searchText));
-
+                return Ok(await _service.Search(searchText));
             }
             catch (NullReferenceException ex)
             {

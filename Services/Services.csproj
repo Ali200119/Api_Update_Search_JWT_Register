@@ -19,8 +19,10 @@
 
   <ItemGroup>
     <None Remove="DTOs\Country\" />
+    <None Remove="DTOs\City\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DTOs\Country\" />
+    <Folder Include="DTOs\City\" />
   </ItemGroup>
 </Project>

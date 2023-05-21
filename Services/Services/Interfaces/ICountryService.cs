@@ -10,7 +10,7 @@ namespace Services.Services.Interfaces
         Task CreateAsync(CountryCreateDto country);
         Task DeleteAsync(int? id);
         Task UpdateAsync(CountryEditDto country, int? id);
-        Task<CountryDto> SearchByName(string searchString);
+        Task<IEnumerable<CountryDto>> Search(string searchText);
         Task SoftDeleteAsync(int? id);
     }
 }

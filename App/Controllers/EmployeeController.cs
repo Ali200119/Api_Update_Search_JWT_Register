@@ -110,8 +110,7 @@ namespace App.Controllers
         {
             try
             {
-                return Ok(await _service.SearchByName(searchText));
-                
+                return Ok(await _service.Search(searchText));
             }
             catch (NullReferenceException ex)
             {

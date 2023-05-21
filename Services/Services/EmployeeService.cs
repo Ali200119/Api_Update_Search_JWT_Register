@@ -16,7 +16,8 @@ namespace Services.Services
         private readonly IEmployeeRepository _employeeRepo;
         private readonly IMapper _mapper;
 
-        public EmployeeService(IEmployeeRepository employeeRepo,IMapper mapper)
+        public EmployeeService(IEmployeeRepository employeeRepo,
+                               IMapper mapper)
         {
             _employeeRepo = employeeRepo;
             _mapper = mapper;
@@ -24,7 +25,7 @@ namespace Services.Services
 
         public async Task CreateAsync(EmployeeCreateDto employee) => await _employeeRepo.CreateAsync(_mapper.Map<Employee>(employee));
       
-        public async Task<IEnumerable<EmployeeDto>> GetAllAsync() => _mapper.Map<IEnumerable<EmployeeDto>>(await _employeeRepo.GetAllAsync());
+        public async Task<IEnumerable<EmployeeDto>> GetAllAsync() => _mapper.Map<IEnumerable<EmployeeDto>>(await _employeeRepo.FindAllAsync());
 
         public async Task<EmployeeDto> GetByIdAsync(int? id) => _mapper.Map<EmployeeDto>(await _employeeRepo.GetByIdAsync(id));
 
@@ -39,7 +40,7 @@ namespace Services.Services
             await _employeeRepo.UpdateAsync(_mapper.Map(employee, existedEmployee));
         }
 
-        public async Task<EmployeeDto> SearchByName(string seacrhText) => _mapper.Map<EmployeeDto>(await _employeeRepo.SearchByName(seacrhText));
+        public async Task<IEnumerable<EmployeeDto>> Search(string seacrhText) => _mapper.Map<IEnumerable<EmployeeDto>>(await _employeeRepo.FindAllAsync(e => e.FullName.ToLower().Trim().Contains(seacrhText.ToLower().Trim())));
 
         public async Task SoftDeleteAsync(int? id) => await _employeeRepo.SoftDeleteAsync(await _employeeRepo.GetByIdAsync(id));
     }
